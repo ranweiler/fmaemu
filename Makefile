@@ -1,6 +1,6 @@
 THEFT_REPO="https://github.com/silentbicycle/theft.git"
 
-THEFT_DIR = vendor/theft
+THEFT_DIR = dep/theft
 THEFT_INCLUDE_DIR = ${THEFT_DIR}/inc
 THEFT_LIB = ${THEFT_DIR}/build/libtheft.a
 
@@ -38,7 +38,7 @@ ${THEFT_LIB}: ${THEFT_DIR}
 	${MAKE} -C ${THEFT_DIR}
 
 ${THEFT_DIR}:
-	mkdir -p vendor
+	mkdir -p dep
 	git clone ${THEFT_REPO} ${THEFT_DIR}
 
 
@@ -46,5 +46,6 @@ ${THEFT_DIR}:
 clean:
 	rm -rf ${BUILD_DIR}
 
-clean-theft:
+.PHONY: clean-deps
+clean-deps:
 	${MAKE} -C ${THEFT_DIR} clean
