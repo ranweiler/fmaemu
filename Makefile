@@ -29,7 +29,7 @@ ${BUILD_DIR}:
 ${BUILD_DIR}/%.o: ${SRC_DIR}/%.c
 	${CC} ${CFLAGS} -c $< -o $@
 
-test: build ${TESTS}
+tests: build ${TESTS}
 
 ${BUILD_DIR}/%: ${TEST_DIR}/%.c ${THEFT_LIB} ${OBJECTS}
 	${CC} ${CFLAGS} $< -o $@ ${THEFT_LIB} ${OBJECTS}
